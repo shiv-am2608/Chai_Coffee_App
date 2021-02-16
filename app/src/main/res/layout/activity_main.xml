@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,20 +11,29 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/name_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:inputType="textCapWords" />
+
         <TextView
+            style="@style/customText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Toppings"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            />
+            android:text="Toppings" />
+
         <CheckBox
             android:id="@+id/whipped_cream_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:text="Whipped Creame"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
         <CheckBox
             android:id="@+id/chocolate_checkbox"
@@ -33,17 +41,16 @@
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:text="Chocolate"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
 
         <TextView
+            style="@style/customText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:text="Quantity"
-            android:textAllCaps="true" />
+            android:layout_marginBottom="16dp"
+            android:text="Quantity" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="0"
+                android:text="1"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -75,7 +82,7 @@
                 android:onClick="increment"
                 android:text="+" />
         </LinearLayout>
-
+        <!--For Displaying in APP
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,6 +98,7 @@
             android:text="₹0"
             android:textColor="@color/black"
             android:textSize="16sp" />
+            -->
 
         <Button
             android:layout_width="wrap_content"
