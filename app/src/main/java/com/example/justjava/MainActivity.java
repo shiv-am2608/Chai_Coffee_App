@@ -2,11 +2,10 @@ package com.example.justjava;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.text.NumberFormat;
 
 
 /**
@@ -20,14 +19,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    /**
-     * This method is called when the order button is clicked.
-     */
     public void submitOrder(View view) {
-        String priceMessage="Total Price: ₹"+(quantity*5)+"\nThank You!!";
-        displayMessage(priceMessage);
-        //displayPrice(quantity*5);
+        CheckBox whippedCreamCheckBox = (CheckBox)findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream=whippedCreamCheckBox.isChecked();
+        CheckBox chocolateCheckBox = (CheckBox)findViewById(R.id.chocolate_checkbox);
+        boolean hasChocolate=chocolateCheckBox.isChecked();
+        displayMessage(createOrderSummary(hasWhippedCream,hasChocolate));
+    }
+    private String createOrderSummary(boolean hasWhippedCream,boolean hasChocolate){
+        String priceMessage="Name:Shivam Agrawal\nAdd Whipped Cream?"+hasWhippedCream+"\nAdd Chocolate?"+hasChocolate+"\n";
+        priceMessage+="Quantity:"+quantity+"\n";
+        priceMessage+="Total Price: ₹"+calculatePrice()+"\nThank You!!";
+        return priceMessage;
+    }
+    public int calculatePrice()
+    {
+        return quantity*5;
     }
     public void increment(View view)
     {
@@ -48,17 +55,10 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText("" + number);
     }
     /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
-    /**
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 }
