@@ -1,4 +1,4 @@
-package com.example.justjava;
+package com.example.chaicoffee;
 
 import org.junit.Test;
 
