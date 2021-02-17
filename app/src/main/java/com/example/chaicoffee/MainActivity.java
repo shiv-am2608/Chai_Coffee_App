@@ -22,8 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
  * Add On of Chocolate->Rs.2
  */
 public class MainActivity extends AppCompatActivity {
-    int chai_quantity=1;
-    int coffee_quantity=1;
+    int chai_quantity=0;
+    int coffee_quantity=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,18 +116,38 @@ public class MainActivity extends AppCompatActivity {
         }
         chai_quantity++;//increments of quantity of chai
         displayChai(chai_quantity);//to display updated quantity of chai
+
+        //to enable checkboxes if customer wants to order coffee
+        CheckBox masalaCheckBox = (CheckBox)findViewById(R.id.masala_checkbox);
+        masalaCheckBox.setEnabled(true);
+        CheckBox gingerCheckBox = (CheckBox)findViewById(R.id.ginger_checkbox);
+        gingerCheckBox.setEnabled(true);
+
     }
 
     //to decerement quantity of chai
     public void decrementChai(View view)
     {
         //to display a message if customer tries to exceed lower limit ie 1
-        if(chai_quantity==1) {
-            Toast.makeText(this,"You cannot have less than 1 cup of tea",Toast.LENGTH_SHORT).show();
+        if(chai_quantity==0) {
+            Toast.makeText(this,"You cannot have less than 0 cup of tea",Toast.LENGTH_SHORT).show();
             return;
         }
         chai_quantity--;//to decrement quantity of chai
         displayChai(chai_quantity);//to display updated quantity of chai
+
+        //to uncheck and disable checkboxes if customer does not want to order tea
+        if(chai_quantity==0){
+            CheckBox masalaCheckBox = (CheckBox)findViewById(R.id.masala_checkbox);
+            if(masalaCheckBox.isChecked())//to uncheck the checkbox if it is checked
+                masalaCheckBox.toggle();
+            masalaCheckBox.setEnabled(false);//to disable the checkbox if customer does not want to order tea
+            CheckBox gingerCheckBox = (CheckBox)findViewById(R.id.ginger_checkbox);
+            if(gingerCheckBox.isChecked())//to uncheck the checkbox if it is checked
+                gingerCheckBox.toggle();
+            gingerCheckBox.setEnabled(false);//to disable the checkbox if customer does not want to order tea
+        }
+
     }
     //to increment quantity of coffee
     public void incrementCoffee(View view)
@@ -139,18 +159,36 @@ public class MainActivity extends AppCompatActivity {
         }
         coffee_quantity++;//increments quantity of coffee
         displayCoffee(coffee_quantity);//displays the updated quantity
+
+        //to enable checkboxes if customer wants to order coffee
+        CheckBox whippedcreamCheckBox = (CheckBox)findViewById(R.id.whipped_cream_checkbox);
+        whippedcreamCheckBox.setEnabled(true);
+        CheckBox chocolateCheckBox = (CheckBox)findViewById(R.id.chocolate_checkbox);
+        chocolateCheckBox.setEnabled(true);
     }
 
     //to decrement quantity of coffee
     public void decrementCoffee(View view)
     {
         //to display a message if customer tries to exceed lower limit ie 1
-        if(coffee_quantity==1) {
-            Toast.makeText(this,"You cannot have less than 1 cup of coffee",Toast.LENGTH_SHORT).show();
+        if(coffee_quantity==0) {
+            Toast.makeText(this,"You cannot have less than 0 cup of coffee",Toast.LENGTH_SHORT).show();
             return;
         }
         coffee_quantity--;//decrements quantity of coffee
         displayCoffee(coffee_quantity);//displays the updated quantity
+
+        //to uncheck and disable checkboxes if customer does not want to order coffee
+        if(coffee_quantity==0){
+            CheckBox whippedcreamCheckBox = (CheckBox)findViewById(R.id.whipped_cream_checkbox);
+            if(whippedcreamCheckBox.isChecked())//to uncheck checkbox if it is checked
+                whippedcreamCheckBox.toggle();
+            whippedcreamCheckBox.setEnabled(false);//to disable checkbox
+            CheckBox chocolateCheckBox = (CheckBox)findViewById(R.id.chocolate_checkbox);
+            if(chocolateCheckBox.isChecked())//to uncheck checkbox if it is checked
+                chocolateCheckBox.toggle();
+            chocolateCheckBox.setEnabled(false);//to disable checkbox
+        }
     }
 
     //to display the quantity of Chai
@@ -198,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
 
         chai_quantity=1;//reset quantity of chai
         coffee_quantity=1;//reset quantity of coffee
-        
+
         displayChai(chai_quantity);//display the reset value of tea at counter
         displayCoffee(coffee_quantity);//display the reset value of coffee at counter
     }
