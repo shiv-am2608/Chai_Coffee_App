@@ -234,8 +234,8 @@ public class MainActivity extends AppCompatActivity {
         if(chocolateCheckBox.isChecked())
             chocolateCheckBox.toggle();
 
-        chai_quantity=1;//reset quantity of chai
-        coffee_quantity=1;//reset quantity of coffee
+        chai_quantity=0;//reset quantity of chai
+        coffee_quantity=0;//reset quantity of coffee
 
         displayChai(chai_quantity);//display the reset value of tea at counter
         displayCoffee(coffee_quantity);//display the reset value of coffee at counter
