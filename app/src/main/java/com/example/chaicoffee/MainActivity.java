@@ -164,4 +164,42 @@ public class MainActivity extends AppCompatActivity {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
+
+    //to reset everything
+    public void resetOrder(View view)
+    {
+        //to reset the name field
+        EditText nameField=(EditText)findViewById(R.id.name_field);
+        nameField.setText("");
+
+        //to reset the E-Mail Id field
+        EditText emailField=(EditText)findViewById(R.id.email_field);
+        emailField.setText("");
+
+        //to reset "Masala" Add On in Tea
+        CheckBox masalaCheckBox = (CheckBox)findViewById(R.id.masala_checkbox);
+        if(masalaCheckBox.isChecked())
+            masalaCheckBox.toggle();
+
+        //to reset "Ginger" Add On in Tea
+        CheckBox gingerCheckBox = (CheckBox)findViewById(R.id.ginger_checkbox);
+        if(gingerCheckBox.isChecked())
+            gingerCheckBox.toggle();
+
+        //to reset "Whipped Cream" Add On in Coffee
+        CheckBox whippedCreamCheckBox = (CheckBox)findViewById(R.id.whipped_cream_checkbox);
+        if(whippedCreamCheckBox.isChecked())
+            whippedCreamCheckBox.toggle();
+
+        //to reset "Chocolate" Add On in Coffee
+        CheckBox chocolateCheckBox = (CheckBox)findViewById(R.id.chocolate_checkbox);
+        if(chocolateCheckBox.isChecked())
+            chocolateCheckBox.toggle();
+
+        chai_quantity=1;//reset quantity of chai
+        coffee_quantity=1;//reset quantity of coffee
+        
+        displayChai(chai_quantity);//display the reset value of tea at counter
+        displayCoffee(coffee_quantity);//display the reset value of coffee at counter
+    }
 }
