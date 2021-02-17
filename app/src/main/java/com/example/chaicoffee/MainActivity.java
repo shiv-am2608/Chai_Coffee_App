@@ -218,21 +218,25 @@ public class MainActivity extends AppCompatActivity {
         CheckBox masalaCheckBox = (CheckBox)findViewById(R.id.masala_checkbox);
         if(masalaCheckBox.isChecked())
             masalaCheckBox.toggle();
+        masalaCheckBox.setEnabled(false);
 
         //to reset "Ginger" Add On in Tea
         CheckBox gingerCheckBox = (CheckBox)findViewById(R.id.ginger_checkbox);
         if(gingerCheckBox.isChecked())
             gingerCheckBox.toggle();
+        gingerCheckBox.setEnabled(false);
 
         //to reset "Whipped Cream" Add On in Coffee
         CheckBox whippedCreamCheckBox = (CheckBox)findViewById(R.id.whipped_cream_checkbox);
         if(whippedCreamCheckBox.isChecked())
             whippedCreamCheckBox.toggle();
+        whippedCreamCheckBox.setEnabled(false);
 
         //to reset "Chocolate" Add On in Coffee
         CheckBox chocolateCheckBox = (CheckBox)findViewById(R.id.chocolate_checkbox);
         if(chocolateCheckBox.isChecked())
             chocolateCheckBox.toggle();
+        chocolateCheckBox.setEnabled(false);
 
         chai_quantity=0;//reset quantity of chai
         coffee_quantity=0;//reset quantity of coffee
